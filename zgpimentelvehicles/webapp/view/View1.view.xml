@@ -1,0 +1,50 @@
+<mvc:View
+	xmlns:table="sap.ui.table"
+	controllerName="vehicles.zgpimentelvehicles.controller.View1"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m"
+>
+	<Page
+		id="page"
+		title="{i18n>title}"
+	>
+		<content>
+			<Button
+				id="_IDGenButton1"
+				text="Marcas"
+				press="onGoToView2Press"
+				class="sapUiMediumMarginTopBottom sapMBtnEmphasized"
+			/>
+			<smartTable:SmartTable
+				id="st_vehicles"
+				xmlns:smartTable="sap.ui.comp.smarttable"
+				xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+				entitySet="ZRDWCDS_VEHICLES"
+				tableType="Table"
+				header="{i18n>items}"
+				persistencyKey="SmartTableAnalytical_Explored"
+				class="sapUiResponsiveContentPadding"
+				app:useSmartToggle="true"
+				enableAutoBinding="true"
+				initiallyVisibleFields="BrandDescription,ColorDescription,ColorId,Currency,Km,ModelDescription,PlateId,Price"
+				showFullScreenButton="true"
+				busyIndicatorDelay="{listView>/delay}"
+				smartFilterId="sfb_monitor"
+			>
+				<Table mode="SingleSelectMaster"/>
+				<smartTable:customToolbar>
+					<OverflowToolbar design="Transparent">
+						<ToolbarSpacer/>
+						<OverflowToolbarButton
+							icon="sap-icon://delete"
+							text="{i18n>delete}"
+							tooltip="{i18n>delete}"
+							press="onDeleteVehicle"
+						/>
+					</OverflowToolbar>
+				</smartTable:customToolbar>
+			</smartTable:SmartTable>
+		</content>
+	</Page>
+</mvc:View>
